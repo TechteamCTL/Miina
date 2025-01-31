@@ -90,6 +90,7 @@ const ProtectedRoutesComponent = ({ admin, userPrevent }) => {
   const isOnOpenRoute = openRoutes.includes(window.location.pathname);
 
   useEffect(() => {
+    console.log("test category 1");
     dispatch(getSubcategories());
   }, []);
 
@@ -128,40 +129,40 @@ const ProtectedRoutesComponent = ({ admin, userPrevent }) => {
   }
   else if (isAuth === undefined || !isAuth) {
     return (
-      <div 
-      style={{position: "relative"}}
+      <div
+        style={{ position: "relative" }}
       >
         <Header goToAboutSection={goToAboutSection} goToTeamSection={goToTeamSection} goToContactSection={goToContactSection} />
-        <div style={{minHeight: "100vh"}}>
-        <Outlet  />
-      </div>
-      <ScrollButton />
-      <Footer />
+        <div style={{ minHeight: "100vh" }}>
+          <Outlet />
+        </div>
+        <ScrollButton />
+        <Footer />
       </div>
     );
   } else {
     if (userPrevent && isAdmin !== admin) {
       return <Navigate to="/user/my-orders" replace />;
     } else {
-    return (
-      <div 
-      style={{position: "relative"}}
-      >
-        <NewHeaderComponentLoggedIn 
-        setIsOpenModal={setIsOpenModalCatalogue}
-        goToAboutSection={goToAboutSection}
-        goToTeamSection={goToTeamSection}
-        goToContactSection={goToContactSection}
-        showSidebar={showSidebar}
-        toggleShowSidebar={toggleShowSidebar}
-        onClickBtn={onClickBtn} />
-        <div style={{minHeight: "100vh"}}>
-        <Outlet  />
-      </div>
-        <Footer />
-        <ScrollButton />
+      return (
+        <div
+          style={{ position: "relative" }}
+        >
+          <NewHeaderComponentLoggedIn
+            setIsOpenModal={setIsOpenModalCatalogue}
+            goToAboutSection={goToAboutSection}
+            goToTeamSection={goToTeamSection}
+            goToContactSection={goToContactSection}
+            showSidebar={showSidebar}
+            toggleShowSidebar={toggleShowSidebar}
+            onClickBtn={onClickBtn} />
+          <div style={{ minHeight: "100vh" }}>
+            <Outlet />
+          </div>
+          <Footer />
+          <ScrollButton />
         </div>
-    );
+      );
     }
   }
 };
