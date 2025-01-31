@@ -1,7 +1,7 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
-import AdminLinksComponent from "../../../components/Admin/AdminLinksComponent";
+import AdminLinksComponent from "../../../components/admin/AdminLinksComponent";
 import { TableHeader, Pagination, Search } from "../../../components/DataTable";
 import React, { useEffect, useState, useMemo } from "react";
 import "../../../pages/general.css";

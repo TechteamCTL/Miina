@@ -26,8 +26,8 @@ import UserOrdersPage from "./pages/user/UserOrdersPage";
 import UserCartDetailsPage from "./pages/user/UserCartDetailsPage";
 import UserOrderDetailsPage from "./pages/user/UserOrderDetailsPage";
 import UserPasswordPage from "./pages/user/UserPasswordPage";
-import EmailVerify from "./components/User/EmailVerify.js";
-import ResetPassword from "./components/User/ResetPassword.js";
+import EmailVerify from "./components/user/EmailVerify.js";
+import ResetPassword from "./components/user/ResetPassword.js";
 
 // protected admin pages:
 import AdminUsersPage from "./pages/admin/AdminUsersPage";

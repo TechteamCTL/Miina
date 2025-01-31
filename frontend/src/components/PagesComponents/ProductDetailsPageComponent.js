@@ -8,7 +8,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import { useSelector, useDispatch, connect } from "react-redux";
 import axios from "axios";
 import moment from "moment-timezone";
-import FilterComponent from "../FilterQueryResultOptions/FilterComponent.js";
+import FilterComponent from "../filterQueryResultOptions/FilterComponent.js";
 import { getCategories } from "../../redux/actions/categoryActions";
 import EditProductShortInforComponent from "../../pages/admin/components/EditProductShortInforComponent";
 import LoginRegisterPage from "../../pages/LoginRegisterPage";
@@ -366,18 +366,18 @@ const ProductDetailsPageComponent = ({
 
         <div className={`green-line ${styles.mobile}`}></div>
         {
-                catList ? (
-                    <span className="categoryHD mt-2">
-                      {
-                        catList.map((category, index) => (
-                          <a href={`/product-list?categoryPath=${category.link}`} key={index}>
-                            {category.name} <label>&nbsp; / &nbsp; </label>
-                          </a>
-                        ))
-                      }
-                    </span>
-                ) : ("")
+          catList ? (
+            <span className="categoryHD mt-2">
+              {
+                catList.map((category, index) => (
+                  <a href={`/product-list?categoryPath=${category.link}`} key={index}>
+                    {category.name} <label>&nbsp; / &nbsp; </label>
+                  </a>
+                ))
               }
+            </span>
+          ) : ("")
+        }
 
         <Col xxl={2} xl={3} lg={3} md={3} className="desktop">
           <ListGroup variant="flush">
