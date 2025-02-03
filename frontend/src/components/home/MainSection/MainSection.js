@@ -23,14 +23,12 @@ const mainCategories = [
     link: "SITE-SAFETY",
     image: "/images/categoriesIcons/SITE_SAFETY.png",
     disabled: false
-
   },
   {
     label: "MERCHANDISING",
     link: "MERCHANDISING",
     image: "/images/categoriesIcons/POWER.png",
     disabled: false
-
   },
   {
     label: "TRANSIT",
@@ -50,9 +48,11 @@ const MainSection = () => {
     <img src="/images/FamilyEmblemCream.png" alt="Family Emblem White" className={styles.FamilyEmblemWhite} />
     <h1 className={styles.title}> Welcome to Miina Group!</h1>
     <p className={styles.text}>
-      As a local Aboriginal business, we specialise in the supply of PPE and related equipment. <br />
-      Miina Group is expanding its client base and supplier network by collaborating with businesses that share our unwavering commitment to quality, reliability, and exceptional customer care. <br />
-      We carefully select every supplier to align with our core values, ensuring we consistently deliver the highest level of service and products to clients across the Pilbara and surrounding regions.<br />
+      Wanthiwa, as a local Aboriginal business, we specialise in the supply of PPE and site safety related equipment, <strong>branded merchandise and a bespoke cultural transit service.</strong><br />
+
+      Miina Group is <strong>establishing and building</strong> its client base and supplier network by collaborating with businesses that share our unwavering commitment to quality, reliability, and exceptional customer care.<br />
+      
+      We carefully select every supplier who align with our core values, ensuring we consistently deliver the highest level of service and products to clients across the Pilbara and surrounding regions. We are committed to work with and support fellow Aboriginal businesses in our supply chain.<br />
     </p>
     <div>
     <div className="green-line"></div>
@@ -104,7 +104,7 @@ const MainSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-          : <div className={styles.defaultDescription}> Some Description About this Category</div>}
+          : <div className={styles.defaultDescription}>If you have any questions, please, <a href="#request">contact us</a></div>}
       </div>
       <div className="green-line"></div>
     </div>

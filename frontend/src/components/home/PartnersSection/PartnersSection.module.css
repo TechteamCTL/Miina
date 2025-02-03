@@ -1,6 +1,6 @@
 .partners {
     background-color: rgba(219, 161, 98, 0.25);
-    padding:  50px 50px 300px 50px;
+    padding:  50px 50px 50px 50px;
 }
 
 .title {
@@ -38,7 +38,7 @@
 
 @media (max-width: 575px) {
     .partners {
-         padding: 25px 25px 150px 25px;
+         padding: 25px 25px 25px 25px;
     }
 
     .title {

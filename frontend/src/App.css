@@ -152,10 +152,23 @@ li:hover {
   @page { size: landscape; }
 }
 
+
 .nav-link {
    background-color: #999A47 !important;
    border-bottom: 1px solid white !important;
    color: #483F55 !important;
+}
+
+.footer .nav-link {
+  background-color: transparent !important;
+  font-family: "HelveticaNeue";
+  border: none !important;
+  font-size: 16px !important;
+}
+
+.ft_c:hover {
+   color: white !important;
+   text-decoration: underline;
 }
 
 .admin-links .nav-link {
@@ -165,6 +178,14 @@ li:hover {
 .admin-links .navbar-nav .nav-link.active {
   background-color: #999A47 !important;
   color: #fff !important;
+}
+
+.privatepolicy { 
+  padding-bottom: 350px;
+}
+
+.terms-conditions{
+  padding-bottom: 350px;
 }
 
 @media (max-width: 575px) {

@@ -18,6 +18,7 @@ import FaqPage from "./pages/FaqPage";
 import TermsConditions from "./pages/user/components/FooterComponents.js/TermsConditions.js";
 import PrivacyPolicy from "./pages/user/components/FooterComponents.js/privacypolicy.js";
 import GoodsReturnForm from "./pages/user/components/FooterComponents.js/GoodsReturnForm.js";
+import SupplierStatement from "./pages/user/components/FooterComponents.js/SupplierStatement.js"
 import ProtectedRoutesComponent from "./components/Routes/ProtectedRoutesComponent";
 
 // protected user pages:
@@ -64,6 +65,7 @@ function App() {
           <Route path="/FaqPage" element={<FaqPage />} />
           <Route path="/TermsConditions" element={<TermsConditions />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/supplierstatement" element={<SupplierStatement />} />
           <Route path="/goodsreturnform" element={<GoodsReturnForm />} />
           <Route path="/" element={<HomePageForVisitorNew />} />
           <Route path="/product-list" element={<ProductListPage />} />

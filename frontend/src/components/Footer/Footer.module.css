@@ -3,12 +3,25 @@
     font-family: "GloriaHallelujah";
     font-size: 20px;
     position: relative;
-    padding: 25px 0px 25px 400px;
+    padding: 50px 25px 25px 25px;
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    /* display: flex;
+    justify-content: center; */
+    color: #521712;
 
+}
+
+.footerWrapper {
+     display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer h6 {
+      text-decoration: underline;
 }
 
 .logoPlant {
@@ -21,7 +34,40 @@
 
 .footerLinks {
      display: flex;
-     gap: 70px;
+     justify-content: space-between;
+     /* align-items: center; */
+     /* gap: 25px; */
+     width: 100%;
+     max-width: 1440px;
+     margin:  0 auto
+}
+
+.copyright {
+      text-align: center;
+      padding-top: 25px;
+      font-size: 14px;
+}
+
+.logoWrapper {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.logo {
+     width: 100%;
+     max-width: 170px;
+}
+
+.footerContent {
+ display: flex;
+}
+
+.tagline {
+      font-size: 12px;
+      margin-top: -10px;
+      color:#483F55;
 }
 
 @media (max-width: 1024px) {
@@ -29,10 +75,13 @@
           padding: 25px 25px;
      }
      .footerLinks {
-          gap: 10px;
-          flex-direction: column-reverse;
+          gap: 20px;
+          flex-wrap: wrap;
+          width: 100%;
+          max-width: 600px;
+          /* flex-direction: column-reverse;
           justify-content: flex-end;
-          align-items: flex-end;
+          align-items: flex-end; */
      }
 
      .logoPlant {
@@ -50,10 +99,19 @@
 
     .footerLinks {
          font-size: 12px;
-         gap: 10px;
-         flex-direction: column-reverse;
-         justify-content: flex-end;
-         align-items: flex-end;
+         gap: 5px;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items:  flex-start;
+    }
+
+    .footerContent {
+     flex-direction: column-reverse;
+     justify-content: flex-start;
+    }
+
+    .copyright {
+     padding-top: 0px;
     }
 }
 

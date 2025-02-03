@@ -2,31 +2,36 @@ import React from 'react'
 import "../../../../App.css";
 const TermsConditions = () => {
     return (
-        <div className="container"><br />
-            <h3>Terms & Conditions</h3><br />
+        <div className="container terms-conditions"><br />
+            <h3>MIINA GROUP PTY LTD - Terms & Conditions</h3><br />
 
             <h5 className="terms">ACCEPTANCE OF THE TERMS OF USE</h5>
-            <p>Welcome to the website of CTL Services (Australia) ("Company", "we" or "us"). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively, these "Terms of Use"), govern your access to and use of <a href="/home">ctlaus.com</a>, including any content, functionality and services offered on or through <a href="ctlaus.com">ctlaus.com</a> (the "Website"), whether as a guest or a registered user.</p>
+            <p>Welcome to the website of Miina Group Supply & Services ("Company", "we" or "us"). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively, these "Terms of Use"), govern your access to and use of <a href="/">miinagroup.com.au</a>, including any content, functionality and services offered on or through <a href="miinagroup.com.au">miinagroup.com.au</a> (the "Website"), whether as a guest or a registered user.</p>
             <p>Please read the Terms of Use carefully before you start to use the Website. By using the Website or by clicking to accept or agree to the Terms of Use when this option is made available to you, you accept and agree to be bound and abide by these Terms of Use and our Privacy Policy, incorporated herein by reference. If you do not want to agree to these Terms of Use or the Privacy Policy, you must not access or use the Website.</p>
-            <p>This Website is offered and available to users who are 18 years of age or older. By using this Website, you represent and warrant that you are of legal age to form a binding contract with the Company and meet all of the foregoing eligibility requirements. If you do not meet all of these requirements, you must not access or use the Website.</p>
+            <p>This Website is offered and available to users who are 18 years of age or older. By using this Website, you represent and warrant that you are of legal age to form a binding contract with the Company and meet all the foregoing eligibility requirements. If you do not meet all of these requirements, you must not access or use the Website.</p>
 
             <h5 className="terms">CHANGES TO THE TERMS OF USE</h5>
-            <p>We may revise and update these Terms of Use from time to time in our sole discretion. All changes are effective immediately when we post them, and apply to all access to and use of the Website thereafter. However, any changes to the dispute resolution provisions set forth in Governing Law and Jurisdiction will not apply to any disputes for which the parties have actual notice on or prior to the date the change is posted on the Website.</p>
+            <p>We may revise and update these Terms of Use from time to time at our discretion. All changes are effective immediately when we post them and apply to all access to and use of the Website thereafter. However, any changes to the dispute resolution provisions set forth in Governing Law and Jurisdiction will not apply to any disputes for which the parties have actual notice on or prior to the date the change is posted on the Website.</p>
             <p>Your continued use of the Website following the posting of revised Terms of Use means that you accept and agree to the changes. You are expected to check this page from time to time so you are aware of any changes, as they are binding on you.</p>
 
             <h5 className="terms">ACCESSING THE WEBSITE AND ACCOUNT SECURITY</h5>
-            <p>We reserve the right to withdraw or amend this Website, and any service or material we provide on the Website, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts of the Website, or the entire Website, to users, including registered users.</p>
+            <p>We reserve the right to withdraw or amend this Website, and any service or material we provide on the Website, at our sole discretion without notice. We will not be liable if for any reason all or any part of the Website is unavailable at any time or for any period. From time to time, we may restrict access to some parts of the Website, or the entire website, to users, including registered users.</p>
             <p>You are responsible for:</p>
             <ul className="terms-ul">
                 <li>Making all arrangements necessary for you to have access to the Website.</li>
                 <li>Ensuring that all persons who access the Website through your internet connection are aware of these Terms of Use and comply with them.</li>
             </ul>
-            <p>To access the Website or some of the resources it offers, you may be asked to provide certain registration details or other information. It is a condition of your use of the Website that all the information you provide on the Website is correct, current and complete. You agree that all information you provide to register with this Website or otherwise, including but not limited to through the use of any interactive features on the Website, is governed by our Privacy Policy, and you consent to all actions we take with respect to your information consistent with our Privacy Policy.</p>
-            <p>If you choose, or are provided with, a user name, password or any other piece of information as part of our security procedures, you must treat such information as confidential, and you must not disclose it to any other person or entity. You also acknowledge that your account is personal to you and agree not to provide any other person with access to this Website or portions of it using your user name, password or other security information. You agree to notify us immediately of any unauthorized access to or use of your user name or password or any other breach of security. You also agree to ensure that you exit from your account at the end of each session. You should use particular caution when accessing your account from a public or shared computer so that others are not able to view or record your password or other personal information.</p>
+            <p>To access the Website or some of the resources it offers, you may be asked to provide certain registration details or other information. It is a condition of your use of the Website that all the information you provide on the Website is correct, current and complete. You agree that all information you provide to register with this Website or otherwise, including but not limited to using any interactive features on the Website, is governed by our Privacy Policy, and you consent to all actions we take with respect to your information consistent with our Privacy Policy.</p>
+            <p>If you choose, or are provided with, a username, password or any other piece of information as part of our security procedures, you must treat such information as confidential, and you must not disclose it to any other person or entity. You also acknowledge that your account is personal to you and agree not to provide any other person with access to this Website or portions of it using your username, password or other security information, with agreement to:</p>
+            <ul className="terms-ul">
+                <li>To notify us immediately of any unauthorized access to or use of your username or password or any other breach of security.</li>
+                <li>To ensure that you exit from your account at the end of each session.</li>
+                <li>Take particular caution when accessing your account from a public or shared computer so that others are not able to view or record your password or other personal information</li>
+            </ul>      
             <p>We have the right to disable any user name, password or other identifier, whether chosen by you or provided by us, at any time in our sole discretion for any or no reason, including if, in our opinion, you have violated any provision of these Terms of Use.</p>
 
             <h5 className="terms">CONSENT</h5>
-            <p>You hereby acknowledge and agree that CTL Services may obtain, process and use your e-mail address to address any network and support issues about CTL branded products and services in the areas of powertools, hand tools, test and measurement and accessories.</p>
+            <p>You hereby acknowledge and agree that Miina Group Services may obtain, process and use your e-mail address to address any network and support issues about Miina Group branded products and services in the areas of powertools, hand tools, test and measurement and accessories.</p>
             <p>You acknowledge that you are aware and accept that the US does not provide a level of data protection that is equivalent to Australia.</p>
 
             <h5 className="terms">INTELLECTUAL PROPERTY RIGHTS</h5>
@@ -44,7 +49,7 @@ const TermsConditions = () => {
                 <li>Delete or alter any copyright, trademark or other proprietary rights notices from copies of materials from this site.</li>
             </ul>
             <p>You must not access or use for any commercial purposes any part of the Website or any services or materials available through the Website.</p>
-            <p>If you wish to make any use of material on the Website other than that set out in this section, please address your request to: <a href="mailto:admin@ctlaus.com">admin@ctlaus.com</a></p>
+            <p>If you wish to make any use of material on the Website other than that set out in this section, please address your request to: <a href="mailto:admin@miinagroup.com.au">admin@miinagroup.com.au</a></p>
             <p>If you print, copy, modify, download or otherwise use or provide any other person with access to any part of the Website in breach of the Terms of Use, your right to use the Website will cease immediately and you must, at our option, return or destroy any copies of the materials you have made. No right, title or interest in or to the Website or any content on the Website is transferred to you, and all rights not expressly granted are reserved by the Company. Any use of the Website not expressly permitted by these Terms of Use is a breach of these Terms of Use and may violate copyright, trademark and other laws.</p>
 
             <h5 className="terms">TRADEMARKS</h5>
@@ -112,7 +117,7 @@ const TermsConditions = () => {
             </ul>
 
             <h5 className="terms">COPYRIGHT INFRINGEMENT</h5>
-            <p>If you believe that any User Contributions violate your copyright, please email us at <a href="mailto:admin@ctlaus.com">admin@ctlaus.com</a>with information regarding the alleged violation. It is the policy of the Company to terminate the user accounts of repeat infringers.</p>
+            <p>If you believe that any User Contributions violate your copyright, please email us at <a href="mailto:admin@miinagroup.com.au">admin@miinagroup.com.au</a>with information regarding the alleged violation. It is the policy of the Company to terminate the user accounts of repeat infringers.</p>
 
             <h5 className="terms">RELIANCE ON INFORMATION POSTED</h5>
             <p>The information presented on or through the Website is made available solely for general information purposes. We do not warrant the accuracy, completeness or usefulness of this information. Any reliance you place on such information is strictly at your own risk. We disclaim all liability and responsibility arising from any reliance placed on such materials by you or any other visitor to the Website, or by anyone who may be informed of any of its contents.</p>
@@ -177,7 +182,7 @@ const TermsConditions = () => {
             <p>The Terms of Use constitutes the sole and entire agreement between you and the Company with respect to the Website and supersede all prior and contemporaneous understandings, agreements, representations and warranties, both written and oral, with respect to the Website.</p>
 
             <h5 className="terms">YOUR COMMENTS AND CONCERNS</h5>
-            <p>All other feedback, comments, requests for technical support and other communications relating to the Website should be directed to: <a href="mailto:admin@ctlaus.com">admin@ctlaus.com</a></p>
+            <p>All other feedback, comments, requests for technical support and other communications relating to the Website should be directed to: <a href="mailto:admin@miinagroup.com.au">admin@miinagroup.com.au</a></p>
             <p>Thank you for visiting the Website.</p>
         </div>
     )

@@ -3,8 +3,8 @@ import "../../../../App.css";
 
 const privacypolicy = () => {
   return (
-    <div className="container"><br />
-      <h3>PRIVACY POLICY</h3><br />
+    <div className="container privatepolicy"><br />
+      <h3>MIINA GROUP PTY LTD - PRIVACY POLICY</h3><br />
       <p>This privacy policy sets out how we uses and protects any information that you give us when you use this website.</p>
       <p>We are committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.</p>
       <p>We may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.</p>
@@ -47,7 +47,7 @@ const privacypolicy = () => {
         <li>if you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us.</li>
       </ul>
 
-      <p>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</p>
+      <p>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen, and to collate as part of customer database, for general communication and updates.</p>
       <p>If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible at the above address. We will promptly correct any information found to be incorrect.</p>
 
 

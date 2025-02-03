@@ -50,6 +50,8 @@
     display: flex;
     gap: 50px;
     font-family: "HelveticaNeue";
+    margin-bottom: 25px;
+
 
 }
 
@@ -64,10 +66,13 @@
     max-width: 250px;
 }
 
+.photo img {
+    width: 100%;
+}
+
 .biographyItems {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     font-family: "HelveticaNeue";
 }
 
@@ -170,11 +175,9 @@
     .info { 
         flex-direction: column;
         gap: 10px;
+        margin-bottom: 10px;
     }
 
-    .photo {
-         max-width: 150px;
-    }
 
     .infoWrapper {
         font-size: 12px;
@@ -183,7 +186,7 @@
     .biographyItems {
          gap: 0px;
          align-items: center;
-         margin-bottom: 25px;
+         margin-bottom: 10px;
     }
 
     .biographyItem {
@@ -197,5 +200,9 @@
 
     .icon {
          width: 15px;
+    }
+
+    .photo {
+         margin:  0 auto;
     }
 }

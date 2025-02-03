@@ -40,7 +40,7 @@ const ContactSection = () => {
 
     return <div className={styles.contacts}>
         <img src="/images/FamilyEmblemCream.png" alt="Family Emblem" className={styles.backgroundEmblem} />
-        <div className={styles.contactsAcknowledgement}>
+        {/* <div className={styles.contactsAcknowledgement}>
             <div className={styles.logoTaglineWrapper}>
                 <img src="/svg/PrimaryLogoColour.svg" alt="Miina Group Logo" className={styles.logo} />
                 <div className={styles.tagline}>Walking and Working on Country, safely</div>
@@ -48,11 +48,11 @@ const ContactSection = () => {
             <p className={styles.acknowledgement}>
                 Miina Group acknowledges the traditional owners and custodians of country throughout Australia and acknowledges their continuing connection to land, waters and community. We pay our respects to the people, the cultures and the elders past, present and emerging.
             </p>
-        </div>
+        </div> */}
         <h1 className={styles.title} id="request">Contact us</h1>
         <div className={styles.subtitle}>
-            Didn't find what you're looking for?<br />
-            We're keen to answer your questions.
+            Didn’t find what you’re looking for?<br />
+            <strong>Buy Local - Give us an opportunity to address your query and source what you need.</strong>
         </div>
 
         {!isSent ? <form className={styles.requestForm} method="post"
