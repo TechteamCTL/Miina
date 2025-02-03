@@ -7,7 +7,7 @@ const PDFPreviewForVisitor = () => {
     const path = window.location.search;
     const pathSegment = path.split('?')[1];
     if (pathSegment) {
-      const constructedUrl = `https://ctladmin.b-cdn.net/documents/${pathSegment}`;
+      const constructedUrl = `https://minadmin.b-cdn.net/documents/${pathSegment}`;
       setPdfUrl(constructedUrl);
     }
   }, []);
