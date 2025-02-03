@@ -28,7 +28,8 @@
 }
 
 .contactsAcknowledgementWrapper {
-    background-color: #999A47;
+    background-color: rgba(219, 161, 98, 0.25);
+    border-top:  2px solid #999A47;
     padding: 50px 50px 300px 50px;
     font-weight: bold;
 }

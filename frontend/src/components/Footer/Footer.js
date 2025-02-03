@@ -6,11 +6,6 @@ const Footer = () => {
         <div className={styles.footerWrapper}>
 {/* <img src="/images/SubmarkRed.png" alt="Miina Plant" className={styles.logoPlant} /> */}
 <div className={styles.footerContent}>
-<div className={styles.logoWrapper}> 
-<img src="/images/miina_logo.png" alt="Miina Plant" className={styles.logo} />
-{/* <p className={styles.tagline}>Walking and Working on Country, safely</p> */}
-</div>
-
     <div className={styles.footerLinks}>
         <div>
             <h6>POLICIES</h6>
