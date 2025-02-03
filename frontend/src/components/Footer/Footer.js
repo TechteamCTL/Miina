@@ -67,7 +67,7 @@ const Footer = () => {
         </div>  
 
         <div>
-            <h6>!!!</h6>
+            <h6>STATEMENTS</h6>
             <Nav.Link
                     id="goods_return"
                     className="ft_c"
