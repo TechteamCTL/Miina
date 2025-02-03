@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { setReduxUserState } from "../../redux/actions/userActions";
-import UserLinksComponent from "../../components/User/UserLinksComponent";
+import UserLinksComponent from "../../components/user/UserLinksComponent";
 
 
 import styles from "../user/components/UserProfilePageComponent.module.css";

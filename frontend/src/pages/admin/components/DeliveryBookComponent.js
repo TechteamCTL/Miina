@@ -1,6 +1,6 @@
 import { Row, Col, Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import AdminLinksComponent from "../../../components/Admin/AdminLinksComponent";
+import AdminLinksComponent from "../../../components/admin/AdminLinksComponent";
 import { useState, useEffect } from "react";
 import styles from "../AdminPagesStyles.module.css";
 

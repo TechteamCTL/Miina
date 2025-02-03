@@ -4,8 +4,8 @@ import ProductForListComponent from "../../components/Product/ProductForListComp
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import FilterComponent from "../FilterQueryResultOptions/FilterComponent.js";
-import BreadcrumbComponent from "../FilterQueryResultOptions/BreadcrumbComponent.js";
+import FilterComponent from "../filterQueryResultOptions/FilterComponent.js";
+import BreadcrumbComponent from "../filterQueryResultOptions/BreadcrumbComponent.js";
 import ProductCategoriesComponent from "../../components/Product/ProductCategoriesComponent";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "../SharedPages.css";
@@ -197,7 +197,7 @@ const ProductListPageComponent = ({
 
       <BreadcrumbComponent />
       <Row>
-        <Col xxl={2} xl={3} lg={3} md={3}  className="desktop">
+        <Col xxl={2} xl={3} lg={3} md={3} className="desktop">
           <ListGroup variant="flush">
             <ListGroup.Item>
               <FilterComponent />

@@ -2,7 +2,7 @@ import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
-import UserLinksComponent from "../../../components/User/UserLinksComponent";
+import UserLinksComponent from "../../../components/user/UserLinksComponent";
 import { TableHeader, Pagination, Search } from "../../../components/DataTable";
 import UserOrderItemForOrderPageComponent from "./UserOrderItemForOrderPageComponent";
 import styles from "./UserOrdersPageComponent.module.css"

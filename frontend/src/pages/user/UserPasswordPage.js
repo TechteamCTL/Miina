@@ -2,7 +2,7 @@ import UserPasswordPageComponent from "./components/UserPasswordPageComponent";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setReduxUserState } from "../../redux/actions/userActions";
-import UserLinksComponent from "../../components/User/UserLinksComponent";
+import UserLinksComponent from "../../components/user/UserLinksComponent";
 
 const updateUserApiRequest = async (
   password,
@@ -24,18 +24,18 @@ const UserPasswordPage = () => {
 
   return (
     <div>
-        <div>
-         <UserLinksComponent />
-        </div>
-        <UserPasswordPageComponent
-          updateUserApiRequest={updateUserApiRequest}
-          fetchUser={fetchUser}
-          userInfoFromRedux={userInfo}
-          setReduxUserState={setReduxUserState}
-          reduxDispatch={reduxDispatch}
-          localStorage={window.localStorage}
-          sessionStorage={window.sessionStorage}
-        />
+      <div>
+        <UserLinksComponent />
+      </div>
+      <UserPasswordPageComponent
+        updateUserApiRequest={updateUserApiRequest}
+        fetchUser={fetchUser}
+        userInfoFromRedux={userInfo}
+        setReduxUserState={setReduxUserState}
+        reduxDispatch={reduxDispatch}
+        localStorage={window.localStorage}
+        sessionStorage={window.sessionStorage}
+      />
     </div>
   );
 };
