@@ -25,6 +25,14 @@ const Footer = () => {
                                 Privacy Policy
                                 </Nav.Link>
                                 <Nav.Link
+                                id="cybersecurity_policy"
+                                className="ft_c"
+                                href="/cybersecuritypolicy"
+                                target="_blank"
+                                >
+                                Cybersecurity Policy
+                                </Nav.Link>
+                                <Nav.Link
                                 id="indigenous-procurement"
                                 href="/pdfpreview?/Indigenous%20Procurement%20Policy.pdf"
                                 target="_blank"
@@ -68,12 +76,20 @@ const Footer = () => {
                     <div>
                         <h6>STATEMENTS</h6>
                         <Nav.Link
-                                id="goods_return"
+                                id="supplier_statement"
                                 className="ft_c"
                                 href="/supplierstatement"
                                 target="_blank"
                                 >
                                 Supplier Commitment
+                                </Nav.Link>
+                                <Nav.Link
+                                id="capability_statement"
+                                className="ft_c"
+                                href="/capabilitystatement"
+                                target="_blank"
+                                >
+                                Capability Statement
                                 </Nav.Link>
                     </div> 
                         <div>

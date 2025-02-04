@@ -238,14 +238,14 @@ const OrdersPageComponent = ({ getOrders, deleteOrder }) => {
 
   return (
     <>
-      <Row className="content-container m-5">
+      <Row className="content-container m-0 admin-order-page">
         <Col md={2}>
           <AdminLinksComponent />
         </Col>
         <Col md={10}>
           <div className="row">
             <div className="col-md-5" style={{ width: "33%" }}>
-              <h1>ORDERS </h1>
+              <h1>ORDERS</h1>
             </div>
             <div className="col-md-5" style={{ width: "33%" }}>
             </div>

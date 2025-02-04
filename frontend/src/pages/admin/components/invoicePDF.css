@@ -163,6 +163,11 @@
     max-width: 1120px */
 }
 
+.admin-order-page {
+    padding-bottom: 250px;
+    padding-top: 50px;
+}
+
 @media screen and (min-width: 1024px) {
     .product_replenishment_items .modal-content {
         width: 150%;

@@ -135,7 +135,7 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
     setShowUnverified(false);
   };
   return (
-    <Row className="content-container m-5">
+    <Row className="content-container m-0 admin-order-page">
       <Col md={2}>
         <AdminLinksComponent />
       </Col>

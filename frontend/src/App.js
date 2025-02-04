@@ -17,8 +17,10 @@ import CartPage from "./pages/CartPage";
 import FaqPage from "./pages/FaqPage";
 import TermsConditions from "./pages/user/components/FooterComponents.js/TermsConditions.js";
 import PrivacyPolicy from "./pages/user/components/FooterComponents.js/privacypolicy.js";
+import CybersecurityPolicy from "./pages/user/components/FooterComponents.js/cybersecuritypolicy.js";
 import GoodsReturnForm from "./pages/user/components/FooterComponents.js/GoodsReturnForm.js";
-import SupplierStatement from "./pages/user/components/FooterComponents.js/SupplierStatement.js"
+import SupplierStatement from "./pages/user/components/FooterComponents.js/SupplierStatement.js";
+import CapabilityStatement from "./pages/user/components/FooterComponents.js/CapabilityStatement.js";
 import ProtectedRoutesComponent from "./components/Routes/ProtectedRoutesComponent";
 
 // protected user pages:
@@ -65,7 +67,9 @@ function App() {
           <Route path="/FaqPage" element={<FaqPage />} />
           <Route path="/TermsConditions" element={<TermsConditions />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/cybersecuritypolicy" element={<CybersecurityPolicy />} />
           <Route path="/supplierstatement" element={<SupplierStatement />} />
+          <Route path="/capabilitystatement" element={<CapabilityStatement />} />
           <Route path="/goodsreturnform" element={<GoodsReturnForm />} />
           <Route path="/" element={<HomePageForVisitorNew />} />
           <Route path="/product-list" element={<ProductListPage />} />
