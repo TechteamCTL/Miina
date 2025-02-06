@@ -60,6 +60,10 @@
     .userOrdersMobileInfo a {
         color:#DBA162 !important;
     }
+
+    .ordersPageWrapper {
+        padding-bottom: 300px;
+    }
   }
 
 

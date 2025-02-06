@@ -227,7 +227,7 @@
 
 @media (max-width: 1025px) {
   .product-detail-page {
-    padding-bottom: 300px;
+    padding-bottom: 350px !important;
     margin: 0 auto !important;
   }
 
