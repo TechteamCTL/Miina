@@ -55,6 +55,7 @@ const UserPasswordPageComponent = () => {
   };
 
   return (
+    <div className={styles.passwordChange}>
     <div className={styles.passwordChangeWrapper}>
       <img alt="Miina Group Family Emblem" src="/images/FamilyEmblemWhite.png" className={styles.emblem} />
       <div>
@@ -76,6 +77,7 @@ const UserPasswordPageComponent = () => {
           <p className="error-message mt-3 mb-0">{successMessage}</p>
         )}
       </div>
+    </div>
     </div>
   );
 };

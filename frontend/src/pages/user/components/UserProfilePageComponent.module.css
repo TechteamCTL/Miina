@@ -118,7 +118,7 @@
 @media(max-width: 480px) {
     .userProfilePageComponentWrapper {
         margin: 0px 0px !important;
-        padding-bottom: 150px;
+        padding-bottom: 500px;
     }
 
     .userProfilePageComponent {

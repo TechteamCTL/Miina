@@ -79,9 +79,6 @@ align-items: center;
           flex-wrap: wrap;
           width: 100%;
           max-width: 600px;
-          /* flex-direction: column-reverse;
-          justify-content: flex-end;
-          align-items: flex-end; */
      }
 
      .logoPlant {
@@ -112,6 +109,10 @@ align-items: center;
 
     .copyright {
      padding-top: 0px;
+    }
+
+    .copyright {
+      padding-top: 15px;
     }
 }
 
