@@ -272,10 +272,9 @@ const ProductListPageComponent = ({
               />
             ) : null}</>
             :
-            <>
               <InfiniteScroll dataLength={searchedData.length} next={fetchData} hasMore={hasMore}
                 loader={<Spinner animation="border" role="status" variant="success" ></Spinner>} endMessage={<p className="mx-4"><b>No more products to load</b></p>}>
-                <Row className="m-2" xs={1} md={2} lg={3} xl={4} xxl={5}>
+                <Row className="m-2 product-list-page-search" xs={1} md={2} lg={3} xl={4} xxl={5} >
                   {searchedData?.map((product, index) => {
                     return (
                       <ProductForListComponent
@@ -297,7 +296,6 @@ const ProductListPageComponent = ({
                   }
                 </Row>
               </InfiniteScroll>
-            </>
           }
         </Col>
       </Row>
