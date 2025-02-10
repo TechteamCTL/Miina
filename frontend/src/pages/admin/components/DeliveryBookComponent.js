@@ -38,7 +38,7 @@ const DeliveryBookComponent = ({ fetchDeliveryBooks, deleteDeliveryBook }) => {
   }, [deliveryBookDeleted]);
 
   return (
-    <Row className="content-container m-5">
+    <Row className="content-container m-5" style={{ paddingBottom: "300px" }}>
       <Col md={2}>
         <AdminLinksComponent />
       </Col>
