@@ -96,7 +96,7 @@ const CreateDeliveryBookComponent = ({ createDeliveryBookApiRequest }) => {
   };
 
   return (
-    <Container style={{paddingBottom: "200px"}}>
+    <Container style={{paddingBottom: "350px"}}>
       <Row className="justify-content-md-center mt-5 content-container">
         <Row>
           <Col md={1}>
