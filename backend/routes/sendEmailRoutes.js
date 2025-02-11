@@ -7,7 +7,8 @@ const {
   sendProformaInvoice,
   deliveryNotice,
   sendRequest,
-  sendNotification
+  sendNotification,
+  sendOrderToCtl
 } = require("../controllers/sendEmailController");
 const { verifyIsLoggedIn } = require("../middleware/verifyAuthToken");
 
@@ -21,5 +22,6 @@ router.post("/emailInv", sendInvoice);
 router.post("/emailNotification", sendNotification);
 router.post("/emailProformaInv", sendProformaInvoice);
 router.post("/emailShipping", deliveryNotice);
+router.post("/emailToCtl", sendOrderToCtl);
 
 module.exports = router;

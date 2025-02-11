@@ -1,6 +1,7 @@
 import OrderDetailsPageComponent from "./components/OrderDetailsPageComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { backOrder } from "../../redux/actions/cartActions";
+import { reOrder } from "../../redux/actions/cartActions";
 
 import axios from "axios";
 
@@ -48,6 +49,13 @@ const sendInv = async (id) => {
 
 const sendProformaInv = async (id) => {
   const { data } = await axios.put("/api/orders/emailProformaInv/" + id);
+  if (data) {
+    return data;
+  }
+};
+
+const sendOrderToCtl = async (id) => {
+  const { data } = await axios.put("/api/orders/emailToCtl/" + id);
   if (data) {
     return data;
   }
@@ -121,6 +129,7 @@ const AdminOrderDetailsPage = () => {
       markAsPaid={markAsPaid}
       sendInv={sendInv}
       sendProformaInv={sendProformaInv}
+      sendOrderToCtl={sendOrderToCtl}
       updateBackOrder={updateBackOrder}
       updateInvoiceNumber={updateInvoiceNumber}
       removeOrderItem={removeOrderItem}
@@ -128,6 +137,7 @@ const AdminOrderDetailsPage = () => {
       adminUpdateDeliverySite={updateDeliverySite}
       sendDeliveryNotice={sendDeliveryNotice}
       reOrdertReduxAction={backOrder}
+      reOrderReduxAction={reOrder}
       reduxDispatch={dispatch}
       updateAdminNote={updateAdminNote}
       adminCreateOrder={adminCreateOrder}

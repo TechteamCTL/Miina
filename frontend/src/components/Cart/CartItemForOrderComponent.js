@@ -114,6 +114,7 @@ const CartItemForOrderComponent = ({
               value={edit === false ? item.cartProducts[0].suppliedQty : qty}
               disabled={edit === false}
               style={{border: "1px solid #521712", width: "100px"}}
+              onKeyDown={(event) => {event.preventDefault()}}
             />
           </td>
           <td style={{ width: "10%" }}>

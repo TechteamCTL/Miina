@@ -15,9 +15,11 @@ import DeliveryNotePrint from "../../../components/Pdfs/DeliveryNotePrint";
 import PickingPackingPrint from "../../../components/Pdfs/PickingPackingPrint";
 import InvoicePrint from "../../../components/Pdfs/InvoicePrint";
 import ProformaInvoicePrint from "../../../components/Pdfs/ProformaInvoicePrint";
-import { pdf } from "@react-pdf/renderer";
+import Order from "../../../components/Pdfs/Order";
+import { pdf, PDFDownloadLink } from "@react-pdf/renderer";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { emptyCart } from "../../../redux/actions/cartActions";
 
 import styles from "../AdminPagesStyles.module.css";
 
@@ -39,7 +41,9 @@ const OrderDetailsPageComponent = ({
   updateAdminNote,
   adminCreateOrder,
   fetchProduct,
-  updateOrderClientCurrentSku
+  updateOrderClientCurrentSku,
+  reOrderReduxAction,
+  sendOrderToCtl
 }) => {
   const { id } = useParams();
 
@@ -834,8 +838,75 @@ const OrderDetailsPageComponent = ({
     } else {
       setPaymentMessage("*please enter valid payment date")
     }
-
   }
+
+  const [clicked, setClicked] = useState(false);
+  const [orderCreated, setOrderCreated] = useState(true);
+  const [ showConfirmationReorder, setShowConfirmationReorder] = useState(false);
+
+  const reOrderHandlerFunction = () => {
+    reduxDispatch(reOrderReduxAction(id));
+    setClicked(true);
+  };
+
+  const handleReorder = () => {
+    if (reOrderItemsCheck.length > 0) {
+      setShowConfirmationReorder(true);
+    } else {
+      reOrderHandlerFunction(id);
+    }
+  };
+
+  const removeAllItems = () => {
+      reduxDispatch(emptyCart());
+    };
+
+  const handleConfirmationClose = (emptyCart) => {
+    if (emptyCart) {
+      removeAllItems();
+      setTimeout(() => {
+        reOrderHandlerFunction(id);
+      }, 1000);
+    } else {
+      reOrderHandlerFunction(id);
+    }
+  };
+
+  const closeModalReorder = () => {
+    setShowConfirmationReorder(false);
+  };
+
+  const handleOrderToCtl = async (invData) => {
+    // setSendingInv(true);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    const formDataToSend = new FormData();
+    formDataToSend.append("billingEmail", `${deliveryBooks[0]?.billingEmail}`);
+    formDataToSend.append("purchaseNumber", `${invData.purchaseNumber}`);
+    formDataToSend.append("totalPrice", `${invData.cartSubtotal}`);
+    formDataToSend.append("invoiceNumber", `${invData.invoiceNumber}`);
+    formDataToSend.append("base64data", `${invData.base64data}`);
+    formDataToSend.append("orderID", `${id}`);
+
+    try {
+      const res = await axios.post(
+        "/api/sendemail/emailToCtl",
+        formDataToSend,
+        config
+      );
+
+      // setSendingInv(false);
+      // setRefreshOrder(!refreshOrder);
+      return true;
+    } catch (err) {
+      console.error(err);
+      // setSendingInv(false);
+      return false;
+    }
+  };
   return (
     <>
       <div className="green-line"></div>
@@ -1031,7 +1102,73 @@ const OrderDetailsPageComponent = ({
             </ListGroup>
           </Col>
           <Col md={3}>
+          <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}} className="mb-2">
             <div className={styles.btnGoToOrders}><a href="/admin/orders">Go to All Orders</a></div>
+            <div>
+                <PDFDownloadLink
+                          document={
+                            <Order
+                              cartItems={cartItems}
+                              invoiceNumber={invoiceNumber}
+                              userInfo={userInfo}
+                              purchaseNumber={purchaseNumber}
+                              cartSubtotal={cartSubtotal}
+                              dueDays={dueDays}
+                              invoiceDate={createdAt}
+                              selectedDeliverySite={selectedDeliverySite}
+                              companyAccount={companyAccount}
+                              taxAmount={taxAmount}
+                            />
+                          }
+                          fileName={invoiceNumber + " Order"}
+                          className="btn btn-success p-1 ps-3 pe-3 confirm-btn"
+                          style={{fontSize: "12px"}}
+                        >
+                          <span>
+                            Download Order <i className="bi bi-file-earmark-pdf"></i>
+                          </span>
+                        </PDFDownloadLink>
+          </div>      
+            <div>
+                      <Button
+                        onClick={handleReorder}
+                        className="p-1 pe-3 ps-3 m-0 confirm-btn"
+                        style={{fontSize: "12px"}}
+                      >
+                        Re-Order
+                      </Button>
+                      <Modal
+                        show={showConfirmationReorder}
+                        onHide={closeModalReorder}
+                        className="Re_Order_Modal"
+                      >
+                        <Modal.Header className="p-0 m-2 mb-0" closeButton>
+                          <span className="fw-bold p-0 m-0">Confirmation</span>
+                        </Modal.Header>
+                        <Modal.Body className="p-2 pt-0">
+                          Some items already in your cart! Do you want to empty
+                          your cart before re-ordering?
+                        </Modal.Body>
+                        <Modal.Footer className="p-0 d-flex justify-content-between">
+                          <Button
+                            variant="success"
+                            onClick={() => handleConfirmationClose(true)}
+                            className="ms-5 p-0 pe-1 ps-1 button-shadow"
+                          >
+                            Empty Cart
+                          </Button>
+                          <Button
+                            variant="secondary"
+                            onClick={() => handleConfirmationClose(false)}
+                            className="me-5 p-0 pe-1 ps-1 button-shadow"
+                          >
+                            Keep Cart Items
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
+            </div>
+          </div>
+            
             <ListGroup>
               <ListGroup.Item className="p-2 ps-2" style={{ backgroundColor: 'transparent' }}>
                 <h3 style={{ color: "#483F55" }}>ORDER SUMMARY</h3>
@@ -1109,6 +1246,17 @@ const OrderDetailsPageComponent = ({
                   style={{ cursor: "pointer", color: "#DBA162" }}
                 ></i>
               </ListGroup.Item>
+              {!isDelivered && <ListGroup.Item className="p-1 ps-2" style={{ backgroundColor: 'transparent' }}>
+                <div className="d-grid gap-2">
+                  <Button
+                    className={`p-0 m-0 w-50 ${deliveredButtonDisabled ? styles.btnRedColor : styles.btnGreenColor}`}
+                    onClick={() => handleOrderToCtl(invData)}
+                    type="button"
+                  >
+                    Send To CTL Australia
+                  </Button>
+                </div>
+              </ListGroup.Item>}
               <ListGroup.Item className="p-1 ps-2" style={{ backgroundColor: 'transparent' }}>
                 <div className="d-grid gap-2">
                   <Button

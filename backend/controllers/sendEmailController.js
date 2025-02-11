@@ -1328,6 +1328,201 @@ const sendNotification = async (receivingEmail, backOrderList) => {
   }
 };
 
+const sendOrderToCtl = async (req, res, next) => {
+  try {
+    let {
+      totalPrice,
+      billingEmail,
+      invoiceNumber,
+      base64data,
+      purchaseNumber,
+      orderID,
+    } = req.body;
+    const order = await Order.findById(orderID);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    console.log("orderID", req.body)
+
+    order.save();
+
+    const base64prefix = "data:application/pdf;base64,";
+    if (base64data.startsWith(base64prefix)) {
+      base64data = base64data.slice(base64prefix.length);
+    }
+
+    const message = {
+      from: `"no-reply Miina Group" <${process.env.NOREPLY}>`,
+      // to: `sales@ctlaus.com`,
+      to: `maria.reekova@gmail.com`,
+      subject: `New order from Miina Group`,
+      text: purchaseNumber,
+      html: `
+    <div style="margin:0;padding:0">
+    <div style="background-color:#f1f2ed">
+      <table
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        border="0"
+        style="background-color:#f1f2ed"
+      >
+        <tbody>
+          <tr>
+            <td width="17">&nbsp;</td>
+            <td valign="top" align="center">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  <tr>
+                    <td valign="top" align="center">
+                      <table
+                        align="center"
+                        width="594"
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                      >
+                        <tbody>
+                          <tr>
+                            <td width="17">&nbsp;</td>
+                            <td width="560" valign="top" align="center">
+                              <table
+                                width="100%"
+                                cellpadding="0"
+                                cellspacing="0"
+                                border="0"
+                                style="padding-top:10px"
+                              >
+                                <tbody>
+                                  <tr></tr>
+                                </tbody>
+                              </table>
+                            </td>
+                            <td width="17">&nbsp;</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td valign="top" align="center">
+                      <table
+                        align="center"
+                        width="594"
+                        cellpadding="0"
+                        cellspacing="0"
+                        border="0"
+                        style="background-color:#ffffff"
+                      >
+                        <tbody>
+                          <tr>
+                            <td width="17">&nbsp;</td>
+                            <td width="560" valign="top" align="center">
+                              <table
+                                width="100%"
+                                cellpadding="0"
+                                cellspacing="0"
+                                border="0"
+                              >
+                                <tbody>
+                                  <tr>
+                                    <td width="100%" valign="top" align="center">
+                                    <br />
+                                        <img
+                                          src="https://minadmin.b-cdn.net/website/PrimaryLogoColour.png"
+                                          align="center"
+                                          border="0"
+                                          width="200"
+                                          height="100"
+                                          alt="Miina Group"
+                                          style="outline:none;text-decoration:none;display:block;font-size:8px;line-height:100%"
+                                          class="CToWUd"
+                                          data-bit="iit"
+                                        />
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td width="17">&nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                    <td width="17">&nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                    <td width="100%" valign="top" align="left">
+                                      <div style="font-family:'Helvetica Light',Helvetica,Arial,sans-serif;font-size:14px;color:#000000;line-height:20px">
+                                        <span style="font-size:14px;font-weight:normal;color:#000000">
+                                          <b>
+                                          Hi There,
+                                          <br />
+                                          </b>
+                                          <br />
+                                        Please find the attached new order from Mina Group.
+                                          <br />
+                                          <br />
+                                          If you have any inquiries, please do not hesitate to contact us at: admin@miinagroup.com.au
+                                          <br />
+                                          <br />
+                                          <b>
+                                              Kind Regards,
+                                              <br />
+                                              The Miina Group Team
+                                              <br />
+                                              <br />
+                                          </b>
+                                        </span>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <font face="arial,helvetica,sans-serif" size="2">
+        <hr>
+          CAUTION: This <span class="il">email</span> and files included in its
+          transmission are solely intended for the use of the addressee(s) and may
+          contain information that is confidential and privileged. If you receive
+          this <span class="il">email</span> in error, please advise us
+          immediately and delete it without copying the contents contained within.
+          Miina Group do not accept
+          liability for the views expressed within or the consequences of any
+          computer viruses that may be transmitted with this email. The contents are also subject to copyright. No part of it should be reproduced, adapted or transmitted
+          without the written consent of the copyright owner.
+        </hr>
+      </font>
+      <div class="yj6qo"></div>
+    </div>
+    </div>`,
+      attachments: [
+        {
+          filename: "Order.pdf",
+          content: Buffer.from(base64data, "base64"),
+          contentType: "application/pdf",
+        },
+      ],
+    };
+    // Send email
+    await transporter.sendMail(message);
+
+    res.status(200).json({ message: "Email sent successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   managementApproval,
   newOrderRemind,
@@ -1336,5 +1531,6 @@ module.exports = {
   deliveryNotice,
   newUserNoticeToMiina,
   sendRequest,
-  sendNotification
+  sendNotification,
+  sendOrderToCtl
 };
