@@ -1107,38 +1107,13 @@ const OrderDetailsPageComponent = ({
             </ListGroup>
           </Col>
           <Col md={3}>
-          <div style={{display: "flex", justifyContent: "space-between", alignItems: "center"}} className="mb-2">
+          <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", gap: "5px"}} className="mb-2">
             <div className={styles.btnGoToOrders}><a href="/admin/orders">Go to All Orders</a></div>
-            <div>
-                <PDFDownloadLink
-                          document={
-                            <Order
-                              cartItems={cartItems}
-                              invoiceNumber={invoiceNumber}
-                              userInfo={userInfo}
-                              purchaseNumber={purchaseNumber}
-                              cartSubtotal={cartSubtotal}
-                              dueDays={dueDays}
-                              invoiceDate={createdAt}
-                              selectedDeliverySite={selectedDeliverySite}
-                              companyAccount={companyAccount}
-                              taxAmount={taxAmount}
-                            />
-                          }
-                          fileName={invoiceNumber + " Order"}
-                          className="btn btn-success p-1 ps-3 pe-3 confirm-btn"
-                          style={{fontSize: "12px"}}
-                        >
-                          <span>
-                            Download Order <i className="bi bi-file-earmark-pdf"></i>
-                          </span>
-                        </PDFDownloadLink>
-          </div>      
             <div>
                       <Button
                         onClick={handleReorder}
-                        className="p-1 pe-3 ps-3 m-0 confirm-btn"
-                        style={{fontSize: "12px"}}
+                        className={`p-1 pe-3 ps-3 m-0 ${styles.btnRedColor}`}
+                        style={{width: "100%", maxWidth: "170px"}}
                       >
                         Re-Order
                       </Button>
@@ -1172,6 +1147,30 @@ const OrderDetailsPageComponent = ({
                         </Modal.Footer>
                       </Modal>
             </div>
+            <div>
+                <PDFDownloadLink
+                          document={
+                            <Order
+                              cartItems={cartItems}
+                              invoiceNumber={invoiceNumber}
+                              userInfo={userInfo}
+                              purchaseNumber={purchaseNumber}
+                              cartSubtotal={cartSubtotal}
+                              dueDays={dueDays}
+                              invoiceDate={createdAt}
+                              selectedDeliverySite={selectedDeliverySite}
+                              companyAccount={companyAccount}
+                              taxAmount={taxAmount}
+                            />
+                          }
+                          fileName={invoiceNumber + " Order"}
+                          className={`btn btn-success p-1 ps-3 pe-3 ${styles.btnRedColor}`}
+                        >
+                          <span>
+                            Download Order <i className="bi bi-file-earmark-pdf"></i>
+                          </span>
+                        </PDFDownloadLink>
+          </div>      
           </div>
             
             <ListGroup>
