@@ -24,6 +24,16 @@ const markAsDelivered = async (id, trackLink) => {
   }
 };
 
+const markAsSendToCtl = async (id, isSentToCtl) => {
+  const { data } = await axios.put("/api/orders/markAsSendToCtl/" + id, {
+    isSentToCtl: isSentToCtl,
+  });
+  console.log("data", data)
+  if (data) {
+    return data;
+  }
+};
+
 const sendDeliveryNotice = async (userEmail, purchaseNumber, trackLink) => {
   const { data } = await axios.post(
     "/api/sendemail/emailShipping/", { userEmail, purchaseNumber, trackLink }
@@ -142,6 +152,7 @@ const AdminOrderDetailsPage = () => {
       updateAdminNote={updateAdminNote}
       adminCreateOrder={adminCreateOrder}
       fetchProduct={fetchProduct}
+      markAsSendToCtl={markAsSendToCtl}
     />
   );
 };

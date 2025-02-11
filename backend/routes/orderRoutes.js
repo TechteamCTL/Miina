@@ -31,6 +31,7 @@ const {
   orderSalesToProduct,
   getSupplier,
   updateApprovedPO,
+  markAsSentToCtl
 } = require("../controllers/orderController");
 
 // user routes
@@ -63,6 +64,7 @@ router.put("/updateAdminNote/:id", updateAdminNote);
 router.put("/markAsBackOrder/:id", markAsBackOrder);
 router.put("/markAsPaid/:id", markAsPaid);
 router.put("/orderSalesToProduct", orderSalesToProduct);
+router.put("/markAsSendToCtl/:id", markAsSentToCtl);
 
 
 module.exports = router;

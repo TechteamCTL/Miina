@@ -27,6 +27,7 @@ const OrderDetailsPageComponent = ({
   getOrder,
   getUser,
   markAsDelivered,
+  markAsSendToCtl,
   markAsPaid,
   sendInv,
   sendProformaInv,
@@ -42,8 +43,7 @@ const OrderDetailsPageComponent = ({
   adminCreateOrder,
   fetchProduct,
   updateOrderClientCurrentSku,
-  reOrderReduxAction,
-  sendOrderToCtl
+  reOrderReduxAction
 }) => {
   const { id } = useParams();
 
@@ -73,6 +73,7 @@ const OrderDetailsPageComponent = ({
   const [sentProformaInvButtonDisabled, setSentProformaInvButtonDisabled] = useState(false);
   const [orderDeliveredButton, setorderDeliveredButton] =
     useState("Mark as sent");
+  const [sendToCtlTextBtn, setSendToCtlTextBtn] = useState("Send To CTL Australia");
   const [invSentButton, setInvSentButton] = useState("Send Invoice");
   const [proformaInvSentButton, setProformaInvSentButton] = useState("Send P.Invoice");
   const [orderPaidButton, setorderPaidButton] = useState("Mark as Paid");
@@ -88,8 +89,9 @@ const OrderDetailsPageComponent = ({
   const [buttonText, setButtonText] = useState("Create");
   const reOrderItemsCheck = useSelector((state) => state.cart.cartItems);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [showProformaInvoice, setShowProformaInvoice] = useState(false)
-  const [btnMarkAsPaid, setBtnMarkAsPaid] = useState(false)
+  const [showProformaInvoice, setShowProformaInvoice] = useState(false);
+  const [btnMarkAsPaid, setBtnMarkAsPaid] = useState(false);
+  const [sendOrderToCtl, setSendingOrderToCtl] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -115,6 +117,7 @@ const OrderDetailsPageComponent = ({
         setDueDays(order.dueDays);
         setPurchaseNumber(order.purchaseNumber);
         setTrackLink(order.trackLink);
+        setSendingOrderToCtl(order.isSentToCtl)
         order.isDelivered
           ? setIsDelivered(order.deliveredAt)
           : setIsDelivered(false);
@@ -876,8 +879,9 @@ const OrderDetailsPageComponent = ({
     setShowConfirmationReorder(false);
   };
 
+
   const handleOrderToCtl = async (invData) => {
-    // setSendingInv(true);
+    setSendingOrderToCtl(true);
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -898,12 +902,13 @@ const OrderDetailsPageComponent = ({
         config
       );
 
-      // setSendingInv(false);
-      // setRefreshOrder(!refreshOrder);
+      if(res.status === 200 ) {
+        markAsSendToCtl(id, true)
+      }
+      
       return true;
     } catch (err) {
       console.error(err);
-      // setSendingInv(false);
       return false;
     }
   };
@@ -1249,11 +1254,12 @@ const OrderDetailsPageComponent = ({
               {!isDelivered && <ListGroup.Item className="p-1 ps-2" style={{ backgroundColor: 'transparent' }}>
                 <div className="d-grid gap-2">
                   <Button
-                    className={`p-0 m-0 w-50 ${deliveredButtonDisabled ? styles.btnRedColor : styles.btnGreenColor}`}
+                    className={`p-0 m-0 w-50 ${sendOrderToCtl ? styles.btnRedColor : styles.btnGreenColor}`}
                     onClick={() => handleOrderToCtl(invData)}
                     type="button"
+                    disabled={sendOrderToCtl ? true : false}
                   >
-                    Send To CTL Australia
+                    {sendOrderToCtl ? "Sent to CTL" : "Send to CTL"}
                   </Button>
                 </div>
               </ListGroup.Item>}

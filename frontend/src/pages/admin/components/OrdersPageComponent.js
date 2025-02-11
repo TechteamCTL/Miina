@@ -26,10 +26,10 @@ const OrdersPageComponent = ({ getOrders, deleteOrder }) => {
 
   const headers = [
     { name: "No#", field: "index", sortable: false },
-    { name: "Customer Name", field: "name", sortable: true },
+    { name: "Customer", field: "name", sortable: true },
     { name: "Company", field: "userCompany", sortable: true },
     { name: "Delivery Site", field: "deliverySite", sortable: true },
-    { name: "Total Amount", field: "orderTotal.cartSubtotal", sortable: true },
+    { name: "Total", field: "orderTotal.cartSubtotal", sortable: true },
     { name: "Items", field: "items", sortable: false },
     { name: "Dsp", field: "isDelivered", sortable: true },
     { name: "PO#", field: "purchaseNumber", sortable: true },
@@ -323,14 +323,14 @@ const OrdersPageComponent = ({ getOrders, deleteOrder }) => {
                   <td
                     onClick={() => handleShow(order._id)}
                     style={getOrderStyle(order)}
-                    className="no-wrap-td"
+                    className="no-wrap-td admin-page-order-user-company"
                   >
                     {order.userCompany}
                   </td>
                   <td
                     onClick={() => handleShow(order._id)}
                     style={getOrderStyle(order)}
-                    className="no-wrap-td"
+                    className="no-wrap-td admin-page-order-delivery-site"
                   >
                     {order.deliverySite.toUpperCase()}
                   </td>

@@ -131,6 +131,11 @@ const orderSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    isSentToCtl: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
     invSentAt: {
       type: Date,
     },

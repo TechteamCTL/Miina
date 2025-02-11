@@ -52,12 +52,16 @@ const TeamSection = () => {
                                              </div>
                                         })}
                                    </div>
+                                   <div>
+                                        <div className={styles.contactEmail}><img src="/svg/email_icon.svg" alt="Email" className={styles.icon} /> {member.email}</div>
+                                        <div><img src="/svg/phone_icon.svg" alt="Email" className={styles.icon}/>{member.phone}</div>
+                                   </div>
                               </div>
                          </div>
-                         <div>
-                         <div className={styles.contactEmail}><img src="/svg/email_icon.svg" alt="Email" className={styles.icon} /> {member.email}</div>
+                         {/* <div>
+                              <div className={styles.contactEmail}><img src="/svg/email_icon.svg" alt="Email" className={styles.icon} /> {member.email}</div>
                               <div><img src="/svg/phone_icon.svg" alt="Email" className={styles.icon}/>{member.phone}</div>
-                         </div>
+                         </div> */}
                          </div>
                     })
                }

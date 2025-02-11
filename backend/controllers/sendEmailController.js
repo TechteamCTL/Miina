@@ -1354,8 +1354,7 @@ const sendOrderToCtl = async (req, res, next) => {
 
     const message = {
       from: `"no-reply Miina Group" <${process.env.NOREPLY}>`,
-      // to: `sales@ctlaus.com`,
-      to: `maria.reekova@gmail.com`,
+      to: process.env.CTLEMAIL,
       subject: `New order from Miina Group`,
       text: purchaseNumber,
       html: `
