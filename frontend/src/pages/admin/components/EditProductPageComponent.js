@@ -316,9 +316,9 @@ const EditProductPageComponent = ({
   };
 
   return (
-    <Container style={{ paddingBottom: "300px" }} fluid>
+    <Container style={{ paddingBottom: "350px" }} fluid>
       <Row className="justify-content-md-center mt-5 content-container ">
-        <Col md={1}>
+        <Col md={2}>
           <GoBackButton />
         </Col>
         <Col md={6}>

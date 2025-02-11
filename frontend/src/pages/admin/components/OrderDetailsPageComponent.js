@@ -916,9 +916,9 @@ const OrderDetailsPageComponent = ({
     <>
       <div className="green-line"></div>
       <div className={styles.orderDetailsPageWrapper}>
-        <Row className="mt-4">
-          <h1 className={styles.title}>ORDER DETAILS</h1>
-          <Col md={9}>
+      <h1 className={styles.title}>ORDER DETAILS</h1>
+        <Row className={`mt-4 ${styles.adminOrderDetailContentWrapper}`}>
+          <Col md={9} className={styles.adminOrderDetailLeftPart}>
             <Row>
               <Col md={6} className="mb-0">
                 <b>Name</b>: {userInfo?.name} {userInfo?.lastName}{" "}
@@ -1106,7 +1106,7 @@ const OrderDetailsPageComponent = ({
               </table>
             </ListGroup>
           </Col>
-          <Col md={3}>
+          <Col md={3} className={styles.adminOrderDetailRightPart}>
           <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", gap: "5px"}} className="mb-2">
             <div className={styles.btnGoToOrders}><a href="/admin/orders">Go to All Orders</a></div>
             <div>

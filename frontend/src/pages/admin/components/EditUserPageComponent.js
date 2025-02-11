@@ -155,8 +155,8 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
   return (
     <Container style={{ paddingBottom: "350px" }}>
       <Row className="justify-content-md-center mt-5 content-container">
-        <Col md={1}>
-          <GoBackButton />
+        <Col md={2}>
+          <GoBackButton  />
         </Col>
         <Col md={6}>
           <h1>EDIT USER</h1>

@@ -393,7 +393,7 @@ const AdminCartDetailsPageComponent = ({
           >
             <h1 className={styles.title}>CART DETAILS (ADMIN)</h1>
           </div>
-          <Col md={9} >
+          <Col md={9} className="cart_detail_left">
             <ListGroup>
               <ListGroup.Item className={styles.adminCartItem}>
                 <Row>

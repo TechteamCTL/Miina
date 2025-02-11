@@ -86,3 +86,45 @@
   font-size: 12px;
   cursor: pointer;
 }
+
+@media (max-width: 1120px) {
+  .orderDetailsPageWrapper {
+    padding: 25px 25px 250px 25px;
+  }
+
+.adminOrderDetailLeftPart {
+  width: 100% !important;
+  font-size: 14px;
+}
+
+  .adminOrderDetailContentWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  .adminOrderDetailRightPart {
+    width: 100%;
+  }
+
+  .adminProductsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adminDirectoryWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .adminDirectoryContent {
+     width: 100%;
+  }
+
+  .adminCartDetailsPageWrapper {
+    background-color: rgba(219, 161, 98, 0.25);
+    padding: 25px 25px 300px 25px;
+  }
+}

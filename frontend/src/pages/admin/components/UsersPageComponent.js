@@ -139,13 +139,13 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
       <Col md={2}>
         <AdminLinksComponent />
       </Col>
-      <Col md={10}>
+      <Col md={10} className="admin-page-users">
         <h1>
           USERS{" "}
 
         </h1>
         <Form >
-          <Row>
+          <Row style={{display: "flex", alignItems: "center"}}>
             <Col>
               <Form.Select
                 aria-label="Email filter"
@@ -203,7 +203,7 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
                 />
               </InputGroup>
             </Col>
-            <Col md={1}>
+            <Col md={2}>
               <Button
                 onClick={resetFilters}
                 className={`m-0 p-0 pe-1 ps-1 ${styles.btnGreenColor}`}
