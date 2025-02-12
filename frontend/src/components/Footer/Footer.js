@@ -65,7 +65,7 @@ const Footer = () => {
                                 <Nav.Link
                                 id="goods_return"
                                 className="ft_c"
-                                // href="/pdfpreview?/CTL_Australia_Supplier_Code_of_Conduct.pdf"
+                                href="/pdfpreview?/Miina%20Supplier%20Code%20of%20Conduct.pdf"
                                 target="_blank"
                                 >
                                 Supplier Code of Conduct
