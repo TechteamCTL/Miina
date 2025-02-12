@@ -27,6 +27,7 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
   const [otherRole, setOtherRole] = useState();
   const [deliverySites, setDeliverySites] = useState()
   const [deliveryLocation, setDeliveryLocation] = useState()
+  const [company, setCompany] = useState()
 
   const handleOtherRole = (e) => {
     setOtherRole(e.target.value);
@@ -139,6 +140,7 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
     if (user.email) {
       getdeliveryBooks(user.email)
         .then((data) => {
+          setCompany(data[0]?.companyName)
           setDeliverySites(data[0]?.sites)
           data[0]?.sites?.some((site) => {
             if (site?.name.toLowerCase() === user?.location.toLowerCase())
@@ -156,7 +158,7 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
     <Container style={{ paddingBottom: "350px" }}>
       <Row className="justify-content-md-center mt-5 content-container">
         <Col md={2}>
-          <GoBackButton  />
+          <GoBackButton />
         </Col>
         <Col md={6}>
           <h1>EDIT USER</h1>
@@ -248,7 +250,7 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
                 name="company"
                 required
                 type="txt"
-                defaultValue={user.company}
+                defaultValue={user.company !== "No Company" ? user.company : company}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicBillLocation">
@@ -268,14 +270,6 @@ const EditUserPageComponent = ({ updateUserApiRequest, fetchUser, getdeliveryBoo
                     </option>))
                 }
               </Form.Select>
-
-
-              {/* <Form.Control
-                name="location"
-                required
-                type="txt"
-                defaultValue={user.location}
-              /> */}
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicipAddress">
               <Form.Label>
