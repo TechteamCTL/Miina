@@ -1,5 +1,4 @@
 import {
-  Container,
   Row,
   Col,
   Form,
@@ -15,6 +14,7 @@ import DeliveryNotePrint from "../../../components/Pdfs/DeliveryNotePrint";
 import PickingPackingPrint from "../../../components/Pdfs/PickingPackingPrint";
 import InvoicePrint from "../../../components/Pdfs/InvoicePrint";
 import ProformaInvoicePrint from "../../../components/Pdfs/ProformaInvoicePrint";
+import OrderToCtl from "../../../components/Pdfs/OrderToCtl";
 import Order from "../../../components/Pdfs/Order";
 import { pdf, PDFDownloadLink } from "@react-pdf/renderer";
 import { useSelector, useDispatch } from "react-redux";
@@ -333,6 +333,37 @@ const OrderDetailsPageComponent = ({
     }
   };
 
+  const generateOrederToCtlPdf= async () => {
+    try {
+      const blob = await pdf(
+        <OrderToCtl
+          cartItems={cartItems}
+          invoiceNumber={invoiceNumber}
+          userInfo={userInfo}
+          purchaseNumber={purchaseNumber}
+          cartSubtotal={cartSubtotal}
+          dueDays={dueDays}
+          invoiceDate={deliveredAt}
+          selectedDeliverySite={selectedDeliverySite}
+          companyAccount={companyAccount}
+          taxAmount={taxAmount}
+          isPaid={btnMarkAsPaid}
+        />
+      ).toBlob();
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64data = reader.result;
+        setBase64Data({
+          base64data,
+        });
+      };
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    }
+  };
+
   const [invData, setInvData] = useState();
   const invBillingAddress = selectedDeliverySite?.billingAddress;
 
@@ -455,6 +486,7 @@ const OrderDetailsPageComponent = ({
 
   // email proforma invoice to client's account team
   const [base64ProformaData, setBase64ProformaData] = useState([]);
+  const [base64OrderData, setBase64OrderData] = useState([]);
 
   const generateProformaPdf = async () => {
     try {
@@ -486,7 +518,50 @@ const OrderDetailsPageComponent = ({
     }
   };
 
+  const generateOrederToCtl = async () => {
+    try {
+      const blob = await pdf(
+        <OrderToCtl
+          cartItems={cartItems}
+          invoiceNumber={invoiceNumber}
+          userInfo={userInfo}
+          purchaseNumber={purchaseNumber}
+          cartSubtotal={cartSubtotal}
+          dueDays={dueDays}
+          invoiceDate={createdAt}
+          selectedDeliverySite={selectedDeliverySite}
+          companyAccount={companyAccount}
+          taxAmount={taxAmount}
+        />
+      ).toBlob();
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64data = reader.result;
+        setBase64OrderData({
+          base64data,
+        });
+      };
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
+    }
+  };
+
   const [proformaInvData, setProformaInvData] = useState();
+
+  useEffect(() => {
+    generateOrederToCtl();
+  }, [
+    orderData,
+    id,
+    edit,
+    removed,
+    editLocation,
+    deliveryBooks,
+    selectedDeliverySite,
+    invBillingAddress
+  ]);
 
   useEffect(() => {
     generateProformaPdf();
@@ -879,7 +954,6 @@ const OrderDetailsPageComponent = ({
     setShowConfirmationReorder(false);
   };
 
-
   const handleOrderToCtl = async (invData) => {
     setSendingOrderToCtl(true);
     const config = {
@@ -888,11 +962,10 @@ const OrderDetailsPageComponent = ({
       },
     };
     const formDataToSend = new FormData();
-    formDataToSend.append("billingEmail", `${deliveryBooks[0]?.billingEmail}`);
     formDataToSend.append("purchaseNumber", `${invData.purchaseNumber}`);
     formDataToSend.append("totalPrice", `${invData.cartSubtotal}`);
     formDataToSend.append("invoiceNumber", `${invData.invoiceNumber}`);
-    formDataToSend.append("base64data", `${invData.base64data}`);
+    formDataToSend.append("base64data", `${base64OrderData.base64data}`);
     formDataToSend.append("orderID", `${id}`);
 
     try {
@@ -912,6 +985,8 @@ const OrderDetailsPageComponent = ({
       return false;
     }
   };
+
+
   return (
     <>
       <div className="green-line"></div>

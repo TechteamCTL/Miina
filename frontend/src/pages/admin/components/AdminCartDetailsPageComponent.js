@@ -431,7 +431,7 @@ const AdminCartDetailsPageComponent = ({
                       aria-label="Default select example"
                       onChange={changeUserName}
                       className="p-0 ps-2"
-                      value={userList?.name}
+                      value={adminSelectedUserName}
                       style={{ backgroundColor: "rgba(219, 161, 98, 0.25)", border: "1px solid #DBA162" }}
                     >
                       <option value={userList.name}>Select a name</option>
@@ -643,7 +643,7 @@ const AdminCartDetailsPageComponent = ({
                   <button
                     size="sm"
                     onClick={orderHandler}
-                    disabled={purchaseNumber?.length < 1}
+                    disabled={purchaseNumber?.length < 1 || !adminSelectedCompany}
                     className="btn p-1 ps-1 pe-1  ms-3 me-3 download_cart_btn"
                     style={{backgroundColor: "#999A47", border: "1px solid #999A47"}}
                   >

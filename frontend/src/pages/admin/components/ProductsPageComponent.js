@@ -264,7 +264,7 @@ const ProductsPageComponent = ({
       <Col md={2}>
         <AdminLinksComponent />
       </Col>
-      <Col md={10}>
+      <Col md={10} className={styles.adminProductsContent}>
         <h1 className={styles.title}>
           PRODUCTS
         </h1>

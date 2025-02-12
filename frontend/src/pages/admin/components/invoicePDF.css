@@ -211,6 +211,10 @@
     .cart_detail_left {
          width: 100%;
     }
+
+    .admin-order-page-content {
+         width: 100% !important;
+    }
 }
 
   @media (max-width: 480px) {

@@ -242,7 +242,7 @@ const OrdersPageComponent = ({ getOrders, deleteOrder }) => {
         <Col md={2}>
           <AdminLinksComponent />
         </Col>
-        <Col md={10}>
+        <Col md={10} className="admin-order-page-content">
           <div className="row">
             <div className="col-md-5" style={{ width: "33%" }}>
               <h1>ORDERS</h1>
