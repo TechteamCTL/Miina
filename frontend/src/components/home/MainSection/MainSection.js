@@ -104,7 +104,9 @@ const MainSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-          : <div className={styles.defaultDescription}>If you have any questions, please, <a href="#request">contact us</a></div>}
+          : <div className={styles.defaultDescription}>
+          <h4>This section is currently under development</h4>
+            If you have any questions, please, <a href="#request">contact us</a></div>}
       </div>
       <div className="green-line"></div>
     </div>
