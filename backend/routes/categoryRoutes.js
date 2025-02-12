@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { getCategories, newCategory, deleteCategory, saveAttr, categoriesForProductList, updateCategoryDisplay, getSubcategoriesT2 } = require("../controllers/categoryController")
 const { verifyIsLoggedIn, verifyIsAdmin } = require("../middleware/verifyAuthToken")
-console.log("test categoryyyy");
 router.get("/subcategories", getSubcategoriesT2)
 router.get("/categoryBlocks/:categoryPath", categoriesForProductList)
 router.get("/", getCategories)

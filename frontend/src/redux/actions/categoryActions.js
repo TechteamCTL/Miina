@@ -18,7 +18,6 @@ export const getCategories = () => async (dispatch) => {
 
 export const getSubcategories = () => async (dispatch) => {
     try {
-        console.log("test category 2");
         const { data } = await axios.get("/api/categories/subcategories");
         dispatch({
             type: actionTypes.GET_SUBCATEGORIES_REQUEST,

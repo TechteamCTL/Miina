@@ -90,7 +90,6 @@ const ProtectedRoutesComponent = ({ admin, userPrevent }) => {
   const isOnOpenRoute = openRoutes.includes(window.location.pathname);
 
   useEffect(() => {
-    console.log("test category 1");
     dispatch(getSubcategories());
   }, []);
 

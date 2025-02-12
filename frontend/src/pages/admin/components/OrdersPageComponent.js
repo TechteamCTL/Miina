@@ -174,7 +174,13 @@ const OrdersPageComponent = ({ getOrders, deleteOrder }) => {
     order.cartItems.map((item) => {
       const { cartProducts, ...restOfItem } = item;
       const combinedItem = { ...restOfItem, ...cartProducts[0] };
-      const { productId, image, saleunit, _idcount, supplierssku, quoteId, ...filteredItem } = combinedItem;
+      const { productId, image, saleunit, _id, count, supplierssku, quoteId, ...filteredItem } = combinedItem;
+      filteredItem.userCompany = order.userCompany;
+      filteredItem.invoiceNumber = order.invoiceNumber;
+      filteredItem.PONumber = order.purchaseNumber;
+      filteredItem.createdDate = order.createdAt;
+      filteredItem.deliveredDate = order.deliveredAt;
+      filteredItem.orderTotal = order.orderTotal.cartSubtotal;
       orderProductsList.push(filteredItem);
     });
   });

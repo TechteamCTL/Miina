@@ -226,7 +226,6 @@ const updateOrderToDelivered = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id).orFail();
 
-
     for (const item of order.cartItems) {
       const productId = item.productId;
       const stockId = item.cartProducts[0]._id;

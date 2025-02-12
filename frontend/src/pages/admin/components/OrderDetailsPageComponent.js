@@ -845,7 +845,7 @@ const OrderDetailsPageComponent = ({
 
   const [clicked, setClicked] = useState(false);
   const [orderCreated, setOrderCreated] = useState(true);
-  const [ showConfirmationReorder, setShowConfirmationReorder] = useState(false);
+  const [showConfirmationReorder, setShowConfirmationReorder] = useState(false);
 
   const reOrderHandlerFunction = () => {
     reduxDispatch(reOrderReduxAction(id));
@@ -861,8 +861,8 @@ const OrderDetailsPageComponent = ({
   };
 
   const removeAllItems = () => {
-      reduxDispatch(emptyCart());
-    };
+    reduxDispatch(emptyCart());
+  };
 
   const handleConfirmationClose = (emptyCart) => {
     if (emptyCart) {
@@ -902,21 +902,23 @@ const OrderDetailsPageComponent = ({
         config
       );
 
-      if(res.status === 200 ) {
+      if (res.status === 200) {
         markAsSendToCtl(id, true)
       }
-      
+
       return true;
     } catch (err) {
       console.error(err);
       return false;
     }
   };
+
+  document.title = "INV-" + invoiceNumber
   return (
     <>
       <div className="green-line"></div>
       <div className={styles.orderDetailsPageWrapper}>
-      <h1 className={styles.title}>ORDER DETAILS</h1>
+        <h1 className={styles.title}>ORDER DETAILS</h1>
         <Row className={`mt-4 ${styles.adminOrderDetailContentWrapper}`}>
           <Col md={9} className={styles.adminOrderDetailLeftPart}>
             <Row>
@@ -1107,72 +1109,72 @@ const OrderDetailsPageComponent = ({
             </ListGroup>
           </Col>
           <Col md={3} className={styles.adminOrderDetailRightPart}>
-          <div style={{display: "flex", justifyContent: "space-between", flexDirection: "column", gap: "5px"}} className="mb-2">
-            <div className={styles.btnGoToOrders}><a href="/admin/orders">Go to All Orders</a></div>
-            <div>
-                      <Button
-                        onClick={handleReorder}
-                        className={`p-1 pe-3 ps-3 m-0 ${styles.btnRedColor}`}
-                        style={{width: "100%", maxWidth: "170px"}}
-                      >
-                        Re-Order
-                      </Button>
-                      <Modal
-                        show={showConfirmationReorder}
-                        onHide={closeModalReorder}
-                        className="Re_Order_Modal"
-                      >
-                        <Modal.Header className="p-0 m-2 mb-0" closeButton>
-                          <span className="fw-bold p-0 m-0">Confirmation</span>
-                        </Modal.Header>
-                        <Modal.Body className="p-2 pt-0">
-                          Some items already in your cart! Do you want to empty
-                          your cart before re-ordering?
-                        </Modal.Body>
-                        <Modal.Footer className="p-0 d-flex justify-content-between">
-                          <Button
-                            variant="success"
-                            onClick={() => handleConfirmationClose(true)}
-                            className="ms-5 p-0 pe-1 ps-1 button-shadow"
-                          >
-                            Empty Cart
-                          </Button>
-                          <Button
-                            variant="secondary"
-                            onClick={() => handleConfirmationClose(false)}
-                            className="me-5 p-0 pe-1 ps-1 button-shadow"
-                          >
-                            Keep Cart Items
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
-            </div>
-            <div>
+            <div style={{ display: "flex", justifyContent: "space-between", flexDirection: "column", gap: "5px" }} className="mb-2">
+              <div className={styles.btnGoToOrders}><a href="/admin/orders">Go to All Orders</a></div>
+              <div>
+                <Button
+                  onClick={handleReorder}
+                  className={`p-1 pe-3 ps-3 m-0 ${styles.btnRedColor}`}
+                  style={{ width: "100%", maxWidth: "170px" }}
+                >
+                  Re-Order
+                </Button>
+                <Modal
+                  show={showConfirmationReorder}
+                  onHide={closeModalReorder}
+                  className="Re_Order_Modal"
+                >
+                  <Modal.Header className="p-0 m-2 mb-0" closeButton>
+                    <span className="fw-bold p-0 m-0">Confirmation</span>
+                  </Modal.Header>
+                  <Modal.Body className="p-2 pt-0">
+                    Some items already in your cart! Do you want to empty
+                    your cart before re-ordering?
+                  </Modal.Body>
+                  <Modal.Footer className="p-0 d-flex justify-content-between">
+                    <Button
+                      variant="success"
+                      onClick={() => handleConfirmationClose(true)}
+                      className="ms-5 p-0 pe-1 ps-1 button-shadow"
+                    >
+                      Empty Cart
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => handleConfirmationClose(false)}
+                      className="me-5 p-0 pe-1 ps-1 button-shadow"
+                    >
+                      Keep Cart Items
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+              </div>
+              <div>
                 <PDFDownloadLink
-                          document={
-                            <Order
-                              cartItems={cartItems}
-                              invoiceNumber={invoiceNumber}
-                              userInfo={userInfo}
-                              purchaseNumber={purchaseNumber}
-                              cartSubtotal={cartSubtotal}
-                              dueDays={dueDays}
-                              invoiceDate={createdAt}
-                              selectedDeliverySite={selectedDeliverySite}
-                              companyAccount={companyAccount}
-                              taxAmount={taxAmount}
-                            />
-                          }
-                          fileName={invoiceNumber + " Order"}
-                          className={`btn btn-success p-1 ps-3 pe-3 ${styles.btnRedColor}`}
-                        >
-                          <span>
-                            Download Order <i className="bi bi-file-earmark-pdf"></i>
-                          </span>
-                        </PDFDownloadLink>
-          </div>      
-          </div>
-            
+                  document={
+                    <Order
+                      cartItems={cartItems}
+                      invoiceNumber={invoiceNumber}
+                      userInfo={userInfo}
+                      purchaseNumber={purchaseNumber}
+                      cartSubtotal={cartSubtotal}
+                      dueDays={dueDays}
+                      invoiceDate={createdAt}
+                      selectedDeliverySite={selectedDeliverySite}
+                      companyAccount={companyAccount}
+                      taxAmount={taxAmount}
+                    />
+                  }
+                  fileName={invoiceNumber + " Order"}
+                  className={`btn btn-success p-1 ps-3 pe-3 ${styles.btnRedColor}`}
+                >
+                  <span>
+                    Download Order <i className="bi bi-file-earmark-pdf"></i>
+                  </span>
+                </PDFDownloadLink>
+              </div>
+            </div>
+
             <ListGroup>
               <ListGroup.Item className="p-2 ps-2" style={{ backgroundColor: 'transparent' }}>
                 <h3 style={{ color: "#483F55" }}>ORDER SUMMARY</h3>
