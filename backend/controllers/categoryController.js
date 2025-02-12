@@ -34,8 +34,6 @@ const getCategories = async (req, res, next) => {
 
 const getSubcategoriesT2 = async (req, res, next) => {
   try {
-    console.log("test category");
-
     let subCategories = {};
     const categories = await Category.find({});
     const mainLinks = mainCategory.map((category) => category.link);

@@ -1342,9 +1342,6 @@ const sendOrderToCtl = async (req, res, next) => {
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
-
-    console.log("orderID", req.body)
-
     order.save();
 
     const base64prefix = "data:application/pdf;base64,";
@@ -1354,7 +1351,7 @@ const sendOrderToCtl = async (req, res, next) => {
 
     const message = {
       from: `"no-reply Miina Group" <${process.env.NOREPLY}>`,
-      to: process.env.CTLEMAIL,
+      to: process.env.QTEMAIL,
       subject: `New order from Miina Group`,
       text: purchaseNumber,
       html: `
