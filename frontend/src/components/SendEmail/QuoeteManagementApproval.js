@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Quotes.css";
 
-const QuoeteManagementApproval = (quotePriceData, cartItems) => {
+const QuoeteManagementApproval = (quotePriceData) => {
   const [formData, setFormData] = useState({
     from: "",
     managerEmail: "",
@@ -43,8 +43,7 @@ const QuoeteManagementApproval = (quotePriceData, cartItems) => {
     .map(
       (item, idx) =>
         `
-    ${idx + 1}. ${item.name} -Item: ${item.cartProducts[0].attrs} - Quantity: ${
-          item.cartProducts[0].quantity
+    ${idx + 1}. ${item.name} -Item: ${item.cartProducts[0].attrs} - Quantity: ${item.cartProducts[0].quantity
         } - Unit price: $${item.cartProducts[0].price}\n `
     )
     .join("");
@@ -71,7 +70,7 @@ const QuoeteManagementApproval = (quotePriceData, cartItems) => {
     );
     formDataToSend.append(
       "totalPrice",
-      `${(quotePriceData.quotePriceData.cartSubtotal * 1.1).toFixed(2)}`
+      `${(quotePriceData.quotePriceData.cartSubtotal).toFixed(2)}`
     );
     formDataToSend.append("description", `${cartItemsString}`);
     formDataToSend.append("base64data", `${base64data}`);
@@ -100,29 +99,29 @@ const QuoeteManagementApproval = (quotePriceData, cartItems) => {
     }
   };
   return (
-      <div className="container email-cart-btn">
-        <form onSubmit={handleSubmit} autoComplete="off">
-          <div className="form-group d-flex justify-content-center email_cart_btn_wrapper">
-            <button
-              className="btn btn-success p-1 ps-3 pe-3 download_cart_btn rounded"
-              disabled={
-                isSending ||
-                successMessage ||
-                receiverEmail !== senderEmail ||
-                quotePriceData.quotePriceData.cartItems.length === 0
-              }
-              style={{width: "100%", maxWidth: "200px", fontSize:"12px", background: "#999A47", border: "none", color: "#521712"}}
-            >
-              {isSending ? `Sending${dots}` : "Email Cart"}
-            </button>
-          </div>
-        </form>
-        {successMessage && (
-          <div className="alert mt-2 p-1 managementAprroval_alert" role="alert">
-            <p className="m-1">The cart has been successfully emailed.</p>
-          </div>
-        )}
-      </div>
+    <div className="container email-cart-btn">
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <div className="form-group d-flex justify-content-center email_cart_btn_wrapper">
+          <button
+            className="btn btn-success p-1 ps-3 pe-3 download_cart_btn rounded"
+            disabled={
+              isSending ||
+              successMessage ||
+              receiverEmail !== senderEmail ||
+              quotePriceData.quotePriceData.cartItems.length === 0
+            }
+            style={{ width: "100%", maxWidth: "200px", fontSize: "12px", background: "#999A47", border: "none", color: "#521712" }}
+          >
+            {isSending ? `Sending${dots}` : "Email Cart"}
+          </button>
+        </div>
+      </form>
+      {successMessage && (
+        <div className="alert mt-2 p-1 managementAprroval_alert" role="alert">
+          <p className="m-1">The cart has been successfully emailed.</p>
+        </div>
+      )}
+    </div>
   );
 };
 

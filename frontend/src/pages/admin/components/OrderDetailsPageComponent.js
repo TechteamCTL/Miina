@@ -73,7 +73,6 @@ const OrderDetailsPageComponent = ({
   const [sentProformaInvButtonDisabled, setSentProformaInvButtonDisabled] = useState(false);
   const [orderDeliveredButton, setorderDeliveredButton] =
     useState("Mark as sent");
-  const [sendToCtlTextBtn, setSendToCtlTextBtn] = useState("Send To CTL Australia");
   const [invSentButton, setInvSentButton] = useState("Send Invoice");
   const [proformaInvSentButton, setProformaInvSentButton] = useState("Send P.Invoice");
   const [orderPaidButton, setorderPaidButton] = useState("Mark as Paid");
@@ -92,6 +91,7 @@ const OrderDetailsPageComponent = ({
   const [showProformaInvoice, setShowProformaInvoice] = useState(false);
   const [btnMarkAsPaid, setBtnMarkAsPaid] = useState(false);
   const [sendOrderToCtl, setSendingOrderToCtl] = useState(false);
+  const [sendToCtlTextBtn, setSendToCtlTextBtn] = useState("Send To CTL");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -333,7 +333,7 @@ const OrderDetailsPageComponent = ({
     }
   };
 
-  const generateOrederToCtlPdf= async () => {
+  const generateOrederToCtlPdf = async () => {
     try {
       const blob = await pdf(
         <OrderToCtl
@@ -956,6 +956,7 @@ const OrderDetailsPageComponent = ({
 
   const handleOrderToCtl = async (invData) => {
     setSendingOrderToCtl(true);
+    setSendToCtlTextBtn("Sending Order..")
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -978,13 +979,20 @@ const OrderDetailsPageComponent = ({
       if (res.status === 200) {
         markAsSendToCtl(id, true)
       }
-
+      setSendToCtlTextBtn("Order Sent")
+      setTimeout(() => {
+        setSendToCtlTextBtn("Resend to CTL")
+      }, 500);
       return true;
     } catch (err) {
       console.error(err);
       return false;
     }
   };
+  useEffect(() => {
+    if (sendOrderToCtl)
+      setSendToCtlTextBtn("Resend to CTL")
+  }, [sendOrderToCtl])
 
   document.title = "INV-" + invoiceNumber
   return (
@@ -1240,6 +1248,7 @@ const OrderDetailsPageComponent = ({
                   }
                   fileName={invoiceNumber + " Order"}
                   className={`btn btn-success p-1 ps-3 pe-3 ${styles.btnRedColor}`}
+                  style={{ pointerEvents: cartItems?.length === 0 ? "none" : "auto", opacity: cartItems?.length === 0 ? 0.5 : 1 }}
                 >
                   <span>
                     Download Order <i className="bi bi-file-earmark-pdf"></i>
@@ -1331,9 +1340,9 @@ const OrderDetailsPageComponent = ({
                     className={`p-0 m-0 w-50 ${sendOrderToCtl ? styles.btnRedColor : styles.btnGreenColor}`}
                     onClick={() => handleOrderToCtl(invData)}
                     type="button"
-                    disabled={sendOrderToCtl ? true : false}
+                    disabled={invData?.billingEmail === null || invData?.billingEmail === undefined}
                   >
-                    {sendOrderToCtl ? "Sent to CTL" : "Send to CTL"}
+                    {sendToCtlTextBtn}
                   </Button>
                 </div>
               </ListGroup.Item>}
@@ -1343,14 +1352,16 @@ const OrderDetailsPageComponent = ({
                     className={`p-0 m-0 w-50 ${deliveredButtonDisabled ? styles.btnRedColor : styles.btnGreenColor}`}
                     onClick={handleShowTrackLink}
                     type="button"
+                    disabled={invData?.billingEmail === null || invData?.billingEmail === undefined}
                   >
                     {orderDeliveredButton}
                   </Button>
                 </div>
               </ListGroup.Item>
+
               {!deliveredButtonDisabled ? (
                 <ListGroup.Item className="p-1 ps-2" style={{ backgroundColor: 'transparent' }}>
-                  <Button className={`p-0 m-0 pe-2 ps-2 w-50 ${styles.btnRedColor}`} disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Print Delivery Note</Button>
+                  {/* <Button className={`p-0 m-0 pe-2 ps-2 w-50 ${styles.btnRedColor}`} disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Print Delivery Note</Button> */}
                 </ListGroup.Item>
               ) : (
                 <PDFPopupButton

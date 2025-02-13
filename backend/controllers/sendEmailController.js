@@ -1351,7 +1351,7 @@ const sendOrderToCtl = async (req, res, next) => {
 
     const message = {
       from: `"no-reply Miina Group" <${process.env.NOREPLY}>`,
-      to: process.env.QTEMAIL,
+      to: process.env.CTLSALES,
       subject: `New order from Miina Group`,
       text: purchaseNumber,
       html: `

@@ -171,7 +171,7 @@ const UserCartDetailsPageComponent = ({
                 billingAddress: site.billingAddress,
                 deliveryAddress: site.deliveryAddress,
               }));
-    
+
               return;
             }
           });
@@ -188,7 +188,7 @@ const UserCartDetailsPageComponent = ({
             : err.response.data
         )
       );
-  }, []);  
+  }, []);
 
   const changeDeliverySite = (e) => {
     setSelectedDeliverySite(e.target.value);
@@ -260,7 +260,6 @@ const UserCartDetailsPageComponent = ({
   }, [userInfo._id]);
 
   const orderHandler = () => {
-    console.log(chosenDeliverySite)
     const orderData = {
       orderTotal: {
         itemsCount: itemsCount,
@@ -307,8 +306,6 @@ const UserCartDetailsPageComponent = ({
       createdUserId: createdUserId ? createdUserId : "",
       createdUserName: createdUserName ? createdUserName : "",
     };
-
-    console.log(orderData)
 
     if (!shippingAddress) {
       setValidated(false);
@@ -592,6 +589,7 @@ const UserCartDetailsPageComponent = ({
 
   const handleSelect = (e) => {
     const newChosenSite = deliveryBooks[0].sites[e.target.value];
+    setUserAddress(newChosenSite?.name)
     setChosenDeliverySite((prevSite) => ({
       ...prevSite,
       location: newChosenSite.name,
@@ -636,16 +634,6 @@ const UserCartDetailsPageComponent = ({
                             Download Cart <i className="bi bi-file-earmark-pdf"></i>
                           </span>
                         </PDFDownloadLink>
-                      </div>
-                      <div className="d-flex justify-content-end">
-                        <Button
-                          type="button"
-                          onClick={removeAllItems}
-                          size="sm"
-                          className="mobile-visibility empty_cart_wrapper"
-                        >
-                          Empty Cart <i className="bi bi-trash" />
-                        </Button>
                       </div>
                     </div>
                     <div>
