@@ -607,7 +607,7 @@ const OrderToCtl = (invPrintData) => {
                   <View style={styles.tableRowProducts} key={idx}>
                     <View style={styles.tableColHeaderMedium}>
                       <Text style={styles.tableColBillItem}>
-                        {item.cartProducts[0].mnasku}
+                        {item.cartProducts[0].suppliersku}
                       </Text>
                     </View>
                     <View style={styles.tableColHeaderCenter}>
